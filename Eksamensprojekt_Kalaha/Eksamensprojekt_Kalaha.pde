@@ -1,5 +1,15 @@
 int ballsInHand = 0;
 PImage bg;
+int startHole = 0;
+int numberOfHoles = 14;
+Hole[] holes = new Hole[numberOfHoles]; 
+
+
+
+
+
+
+
 
 void setup(){
   size(800, 450);
@@ -41,4 +51,16 @@ void draw(){
   ellipse(330, 360, 90, 90);
   ellipse(415, 360, 90 ,90);
   ellipse(500, 360, 90, 90);
+}
+
+
+
+void loop(){
+ for(int i = startHole; i < startHole + ballsInHand; i++){
+  //holes[i%nummerAfHuller].addBall;
+  // array skal skrives, for at det virker
+  
+  }
+  
+  
 }
