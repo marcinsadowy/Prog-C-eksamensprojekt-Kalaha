@@ -32,25 +32,7 @@ void draw(){
   textSize(20);
   text(ballsInHand, mouseX + 30, mouseY - 5);
   
-  noStroke();
-  noFill();
-
-  ellipse(75, 90, 90, 90);
-  ellipse(160, 90, 90, 90);
-  ellipse(245, 90, 90, 90);
-  ellipse(330, 90, 90, 90);
-  ellipse(415, 90, 90, 90);
-  ellipse(500, 90, 90, 90);
-
-  rect(276, 225, 246, 118);
-  rect(647, 225, 246, 118);
-
-  ellipse(75, 360, 90, 90);
-  ellipse(160, 360, 90, 90);
-  ellipse(245, 360, 90, 90);
-  ellipse(330, 360, 90, 90);
-  ellipse(415, 360, 90 ,90);
-  ellipse(500, 360, 90, 90);
+  
 }
 
 
@@ -61,6 +43,21 @@ void loop(){
   // array skal skrives, for at det virker
   
   }
-  
-  
 }
+
+  ellipse(75, 90, 90, 90);
+  ellipse(205, 90, 90, 90);
+  ellipse(335, 90, 90, 90);
+  ellipse(465, 90, 90, 90);
+  ellipse(595, 90, 90, 90);
+  ellipse(725, 90, 90, 90);
+
+  rect(276, 225, 246, 118);
+  rect(647, 225, 246, 118);
+
+  ellipse(75, 360, 90, 90);
+  ellipse(205, 360, 90, 90);
+  ellipse(335, 360, 90, 90);
+  ellipse(465, 360, 90, 90);
+  ellipse(595, 360, 90 ,90);
+  ellipse(725, 360, 90, 90);
