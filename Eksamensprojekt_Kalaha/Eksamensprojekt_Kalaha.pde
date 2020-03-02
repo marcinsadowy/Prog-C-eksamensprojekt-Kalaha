@@ -2,13 +2,7 @@ int ballsInHand = 0;
 PImage bg;
 int startHole = 0;
 int numberOfHoles = 14;
-Hole[] holes = new Hole[numberOfHoles]; 
-
-
-
-
-
-
+Hole[] holes;
 
 
 void setup(){
@@ -23,7 +17,13 @@ void setup(){
   PImage img = createImage(32, 32, RGB);
   img = loadImage("Super Mario 64 cursor.png");
   cursor(img, 0, 0);
-}
+  
+  holes = new Hole[numberOfHoles];
+  
+  for( int i = 0; i < numberOfHoles; i++){ 
+    holes[i] = new Hole(50, 50, 6);
+    println(holes[i].numberOfBalls); 
+  }
 
 void draw(){
   clear();
