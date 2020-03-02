@@ -5,7 +5,7 @@ void setup(){
   size(800, 450);
   
   //loads background, and sets background image
-  PImage bg = createImage(800, 450, RGB);
+  bg = createImage(800, 450, RGB);
   bg = loadImage("Kalaha board.png");
   background(bg);
   
