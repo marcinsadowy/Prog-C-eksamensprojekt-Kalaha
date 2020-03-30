@@ -14,7 +14,7 @@ void setup(){
   background(bg);
   
   //loads cursor image, and sets cursor image
-  PImage img = createImage(32, 32, RGB);
+  PImage img = createImage(32, 32, RGB);<
   img = loadImage("Super Mario 64 cursor.png");
   cursor(img, 0, 0);
   
@@ -24,7 +24,7 @@ void setup(){
     holes[i] = new Hole(50, 50, 6);
     println(holes[i].numberOfBalls); 
   }
-
+}
 void draw(){
   clear();
   background(bg);
@@ -45,19 +45,19 @@ void loop(){
   }
 }
 
-  ellipse(75, 90, 90, 90);
-  ellipse(205, 90, 90, 90);
-  ellipse(335, 90, 90, 90);
-  ellipse(465, 90, 90, 90);
-  ellipse(595, 90, 90, 90);
-  ellipse(725, 90, 90, 90);
+  //ellipse(75, 90, 90, 90);
+  //ellipse(205, 90, 90, 90);
+  //ellipse(335, 90, 90, 90);
+  //ellipse(465, 90, 90, 90);
+  //ellipse(595, 90, 90, 90);
+  //ellipse(725, 90, 90, 90);
 
-  rect(276, 225, 246, 118);
-  rect(647, 225, 246, 118);
+ // rect(276, 225, 246, 118);
+  //rect(647, 225, 246, 118);
 
-  ellipse(75, 360, 90, 90);
-  ellipse(205, 360, 90, 90);
-  ellipse(335, 360, 90, 90);
-  ellipse(465, 360, 90, 90);
-  ellipse(595, 360, 90 ,90);
-  ellipse(725, 360, 90, 90);
+  //ellipse(75, 360, 90, 90);
+  //ellipse(205, 360, 90, 90);
+  //ellipse(335, 360, 90, 90);
+  //ellipse(465, 360, 90, 90);
+  //ellipse(595, 360, 90 ,90);
+  //ellipse(725, 360, 90, 90);
