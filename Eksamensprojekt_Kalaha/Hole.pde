@@ -9,7 +9,7 @@ class Hole {
     this.numberOfBalls = numberOfBalls;
   }
   
-  void addBall() {
+  void addBallHole() {
       
   }
 }

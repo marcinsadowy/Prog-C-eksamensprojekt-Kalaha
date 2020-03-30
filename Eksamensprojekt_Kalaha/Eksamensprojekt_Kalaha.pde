@@ -21,10 +21,10 @@ void setup(){
   holes = new Hole[numberOfHoles];
   
   for( int i = 0; i < numberOfHoles; i++){ 
-    holes[i] = new Hole(50, 50, 6);
+    holes[i] = new Hole(50, 50, 6); //holeArray[i]
     println(holes[i].numberOfBalls); 
   }
-
+}
 void draw(){
   clear();
   background(bg);
@@ -38,26 +38,28 @@ void draw(){
 
 
 void loop(){
+  //sætter tælleren til at være lig med start hullet, som er valgt ved klik*ikke lavet endnu*, add ball i hullet, gøres inde i loopet 
  for(int i = startHole; i < startHole + ballsInHand; i++){
-  //holes[i%nummerAfHuller].addBall;
+  holes[i%numberOfHoles].addBallHole();
   // array skal skrives, for at det virker
   
   }
 }
 
-  ellipse(75, 90, 90, 90);
-  ellipse(205, 90, 90, 90);
-  ellipse(335, 90, 90, 90);
-  ellipse(465, 90, 90, 90);
-  ellipse(595, 90, 90, 90);
-  ellipse(725, 90, 90, 90);
+//
+  //ellipse(75, 90, 90, 90);
+  //ellipse(205, 90, 90, 90);
+  //ellipse(335, 90, 90, 90);
+  //ellipse(465, 90, 90, 90);
+  //ellipse(595, 90, 90, 90);
+  //ellipse(725, 90, 90, 90);
 
-  rect(276, 225, 246, 118);
-  rect(647, 225, 246, 118);
+  //rect(276, 225, 246, 118);
+  //rect(647, 225, 246, 118);
 
-  ellipse(75, 360, 90, 90);
-  ellipse(205, 360, 90, 90);
-  ellipse(335, 360, 90, 90);
-  ellipse(465, 360, 90, 90);
-  ellipse(595, 360, 90 ,90);
-  ellipse(725, 360, 90, 90);
+ // ellipse(75, 360, 90, 90);
+  //ellipse(205, 360, 90, 90);
+  //ellipse(335, 360, 90, 90);
+  //ellipse(465, 360, 90, 90);
+  //ellipse(595, 360, 90 ,90);
+  //ellipse(725, 360, 90, 90);
