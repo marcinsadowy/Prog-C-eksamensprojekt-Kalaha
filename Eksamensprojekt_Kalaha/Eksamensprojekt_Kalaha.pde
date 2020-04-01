@@ -1,11 +1,19 @@
-int ballsInHand = 0;
+
 PImage bg;
 int startHole = 0;
 int numberOfHoles = 14;
+
+int hulPositionX[];
+int hulPositionY[];
+
+//laver et nyt objekt som hedder hand
 Hole[] holes;
+//laver et nyt objekt som hedder hand
+Hand hand;
 
 
 void setup(){
+  hand = new Hand(0);
   size(800, 450);
   
   //loads background, and sets background image
@@ -18,11 +26,12 @@ void setup(){
   img = loadImage("Super Mario 64 cursor.png");
   cursor(img, 0, 0);
   
+  // laver arrayet og putter huller ind i det
   holes = new Hole[numberOfHoles];
-  
+// fiks så det er forskellige huller  
   for( int i = 0; i < numberOfHoles; i++){ 
-    holes[i] = new Hole(50, 50, 6); //holeArray[i]
-    println(holes[i].numberOfBalls); 
+    holes[i] = new Hole(hulPositionX[i], hulPositionY[i], 6); //holeArray[i]
+    holes[i].drawAmount(); 
   }
 }
 void draw(){
@@ -30,16 +39,18 @@ void draw(){
   background(bg);
   
   textSize(20);
-  text(ballsInHand, mouseX + 30, mouseY - 5);
+  text(hand.ballsInHand, mouseX + 30, mouseY - 5);
+  for(int i = 0; i < holes.length; i++ ){
+    holes[i].drawAmount();
   
-  
+}
 }
 
 
 
 void loop(){
   //sætter tælleren til at være lig med start hullet, som er valgt ved klik*ikke lavet endnu*, add ball i hullet, gøres inde i loopet 
- for(int i = startHole; i < startHole + ballsInHand; i++){
+ for(int i = startHole; i < startHole + hand.ballsInHand; i++){
   holes[i%numberOfHoles].addBallHole();
   // array skal skrives, for at det virker
   
