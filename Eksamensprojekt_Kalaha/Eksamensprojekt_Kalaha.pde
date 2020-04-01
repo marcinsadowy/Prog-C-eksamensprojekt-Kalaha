@@ -2,9 +2,10 @@
 PImage bg;
 int startHole = 0;
 int numberOfHoles = 14;
-
-int hulPositionX[];
-int hulPositionY[];
+//x og y værdierne til hvert hul i et array
+                                                // rectangel´´                       rectangel
+int hulPositionX[] = {75,205,335,465,595,725, 647, 725,595,465,335,205,75, 152};
+int hulPositionY[] = {90,90,90,90,90,90, 225, 360,360,360,360,360,360, 225};
 
 //laver et nyt objekt som hedder hand
 Hole[] holes;
@@ -38,8 +39,11 @@ void draw(){
   clear();
   background(bg);
   
+  //viser hvor mange kugler man har i hånden
   textSize(20);
+  fill(255,0,255);
   text(hand.ballsInHand, mouseX + 30, mouseY - 5);
+  
   for(int i = 0; i < holes.length; i++ ){
     holes[i].drawAmount();
   

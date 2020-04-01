@@ -13,6 +13,7 @@ class Hole {
       numberOfBalls += 1;
   }
   void drawAmount() {
-  text(numberOfBalls, x, y);
+    fill(0);
+    text(numberOfBalls, x - 5, y + 5);
   }
 }
