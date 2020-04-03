@@ -1,9 +1,9 @@
 
-PImage bg;
+PImage board;
 int startHole = 0;
 int numberOfHoles = 14;
 //x og y værdierne til hvert hul i et array
-                                                // rectangel´´                       rectangel
+                                           // rectangel´´                       rectangel
 int hulPositionX[] = {75,205,335,465,595,725, 647, 725,595,465,335,205,75, 152};
 int hulPositionY[] = {90,90,90,90,90,90, 225, 360,360,360,360,360,360, 225};
 
@@ -15,12 +15,13 @@ Hand hand;
 
 void setup(){
   hand = new Hand(0);
-  size(800, 450);
+  size(800, 800);
   
-  //loads background, and sets background image
-  bg = createImage(800, 450, RGB);
-  bg = loadImage("Kalaha board.png");
-  background(bg);
+  //loader board  
+  board = createImage(800, 450, RGB);
+  board = loadImage("Kalaha board.png");
+  //tegner boardet først, så alt andet kommer oven på
+  image(board, 0, 0);
   
   //loads cursor image, and sets cursor image
   PImage img = createImage(32, 32, RGB);
@@ -31,14 +32,21 @@ void setup(){
   holes = new Hole[numberOfHoles];
 // fiks så det er forskellige huller  
   for( int i = 0; i < numberOfHoles; i++){ 
-    holes[i] = new Hole(hulPositionX[i], hulPositionY[i], 6); //holeArray[i]
+    int bl = 6;
+    //hvis hullet er et mål, så er der ikke nogen bolde i hullet
+    if(i == 6 || i == 13){bl = 0;};
+    holes[i] = new Hole(hulPositionX[i], hulPositionY[i], bl); //holeArray[i]
     holes[i].drawAmount(); 
+    // printer hullets nummer, hvor mange kugler der er i til at starte med, og x og y position, til konsollen
+    println(i + ", " + holes[i].numberOfBalls + ", " + holes[i].x + ", " + holes[i].y);
+    bl = 6;
   }
 }
 void draw(){
   clear();
-  background(bg);
-  
+  //tegner boardet først, så alt andet kommer oven på
+  image(board, 0, 0);
+
   //viser hvor mange kugler man har i hånden
   textSize(20);
   fill(255,0,255);
@@ -47,16 +55,29 @@ void draw(){
   for(int i = 0; i < holes.length; i++ ){
     holes[i].drawAmount();
   
+  
+  fill(255);
+  rect(650,700, 100, 50);
+  fill(0);
+  text("EXIT", 680, 730);
+
+  if (mousePressed == true){
+    if (mouseX >= 650 & mouseX <= 750 & mouseY >= 700 & mouseY <= 750){
+      exit();
+    }
+
+  }
+
 }
 }
-
-
 
 void loop(){
   //sætter tælleren til at være lig med start hullet, som er valgt ved klik*ikke lavet endnu*, add ball i hullet, gøres inde i loopet 
- for(int i = startHole; i < startHole + hand.ballsInHand; i++){
+ for(int i = hand.chosenHole; i < hand.chosenHole + hand.ballsInHand; i++){
+  //fjerner en kugle fra hånden og tilføjer den til hullet
+  hand.removeBallsInHand();
   holes[i%numberOfHoles].addBallHole();
-  // array skal skrives, for at det virker
+  
   
   }
 }
