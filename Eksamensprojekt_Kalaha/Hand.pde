@@ -8,12 +8,13 @@ class Hand {
 
   
   void removeBallsInHand() {
-      ballsInHand -= 1;
+      ballsInHand = ballsInHand - 1;
   }
   
 
-  void click(int chosenHole) {
+  void click(int chosenHole, int ballsInHand) {
     this.chosenHole = chosenHole;
+    this.ballsInHand = ballsInHand;
   }
 
 }

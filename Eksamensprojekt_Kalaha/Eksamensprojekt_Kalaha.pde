@@ -2,8 +2,10 @@
 PImage board;
 int startHole = 0;
 int numberOfHoles = 14;
+int turn = 0;
+
 //x og y værdierne til hvert hul i et array
-                                           // rectangel´´                       rectangel
+                                           // rectangel´´                  rectangel
 int hulPositionX[] = {75,205,335,465,595,725, 647, 725,595,465,335,205,75, 152};
 int hulPositionY[] = {90,90,90,90,90,90, 225, 360,360,360,360,360,360, 225};
 
@@ -39,7 +41,6 @@ void setup(){
     holes[i].drawAmount(); 
     // printer hullets nummer, hvor mange kugler der er i til at starte med, og x og y position, til konsollen
     println(i + ", " + holes[i].numberOfBalls + ", " + holes[i].x + ", " + holes[i].y);
-    bl = 6;
   }
 }
 void draw(){
@@ -60,29 +61,162 @@ void draw(){
   rect(650,700, 100, 50);
   fill(0);
   text("EXIT", 680, 730);
+  
+  
+   
 
-  if (mousePressed == true){
-    if (mouseX >= 650 & mouseX <= 750 & mouseY >= 700 & mouseY <= 750){
-      exit();
+
+}
+}
+
+void mouseClicked(){
+  //Slukker spillet hvis man trykker på exit knappen
+      
+        if (mouseX >= 650 & mouseX <= 750 & mouseY >= 700 & mouseY <= 750){
+          exit();} 
+
+    
+         // første hul, nummer 0 i array
+          if (mouseX >= 35 & mouseX <= 115 & mouseY >= 50 & mouseY <= 130){
+              hand.click(0, holes[0].numberOfBalls );
+              holes[0].numberOfBalls = 0;
+              spilLoop();
+              println("exit 1");
+              }
+              
+          // andet hul, nummer 1 i array
+          if (mouseX >= 145 & mouseX <= 245 & mouseY >= 50 & mouseY <= 130){
+              hand.click(1, holes[1].numberOfBalls );
+              holes[1].numberOfBalls = 0;
+              spilLoop(); 
+              println("exit 2");
+               
+          }
+        // tredje hul, nummer 2 i array
+          if (mouseX >= 295 & mouseX <= 375 & mouseY >= 50 & mouseY <= 130){
+              hand.click(2, holes[2].numberOfBalls );
+              holes[2].numberOfBalls = 0;
+              spilLoop();
+              println("exit 3");
+          }
+        // fjerde hul, nummer 3 i array
+          if (mouseX >= 425 & mouseX <= 505 & mouseY >= 50 & mouseY <= 130){
+            hand.click(3, holes[3].numberOfBalls );
+              holes[3].numberOfBalls = 0;
+              spilLoop();
+              println("exit 4");    
+          }
+          
+          // femte hul, nummer 4 i array
+          if (mouseX >= 555 & mouseX <= 635 & mouseY >= 50 & mouseY <= 130){
+              hand.click(4, holes[4].numberOfBalls );
+              holes[4].numberOfBalls = 0;
+              spilLoop();
+              println("exit 5");
+            }
+          // sjette hul, nummer 5 i array
+          if (mouseX >= 685 & mouseX <= 765 & mouseY >= 50 & mouseY <= 130){
+              hand.click(5, holes[5].numberOfBalls );
+              holes[5].numberOfBalls = 0;
+              spilLoop();
+              println("exit 6");
+            }
+           // ottende hul, nummer 7 i array 
+          if (mouseX >= 685 & mouseX <= 765 & mouseY >= 320 & mouseY <= 400){
+              hand.click(7, holes[7].numberOfBalls );
+              holes[7].numberOfBalls = 0;
+              spilLoop();
+              println("exit 7");
+            }
+          // niende hul, nummer 8 i array
+          if (mouseX >= 555 & mouseX <= 635 & mouseY >= 320 & mouseY <= 400){
+              hand.click(8, holes[8].numberOfBalls );
+              holes[8].numberOfBalls = 0;
+              spilLoop();
+              println("exit 8");    
+          }
+          // tiende hul, nummer 9 i array
+          if (mouseX >= 425 & mouseX <= 505 & mouseY >= 320 & mouseY <= 400){
+              hand.click(9, holes[9].numberOfBalls );
+              holes[9].numberOfBalls = 0;
+              spilLoop();
+              println("exit 9");    
+          }
+          // elfte hul, nummer 10 i array   
+          if (mouseX >= 295 & mouseX <= 375 & mouseY >= 320 & mouseY <= 400){
+              hand.click(10, holes[10].numberOfBalls );
+              holes[10].numberOfBalls = 0;
+              spilLoop();
+              println("exit 10");    
+          }
+          // tolvte hul, nummer 11 i array
+          if (mouseX >= 145 & mouseX <= 245 & mouseY >= 320 & mouseY <= 400){
+              hand.click(11, holes[11].numberOfBalls );
+              holes[11].numberOfBalls = 0;
+              spilLoop();
+              println("exit 11");    
+          }
+          // trettende hul, nummer 12 i array
+          if (mouseX >= 35 & mouseX <= 115 & mouseY >= 320 & mouseY <= 400){
+              hand.click(12, holes[12].numberOfBalls );
+              holes[12].numberOfBalls = 0;
+              spilLoop();
+              println("exit 12");    
+          } 
+}
+
+
+void spilLoop(){
+  int startBalls = hand.ballsInHand;
+  int i;
+  int stoppedHole;
+  int n = 1;
+  while(n > 0){
+    //sætter tælleren til at være lig med start hullet, som er valgt ved klik*ikke lavet endnu*, add ball i hullet, gøres inde i loopet 
+   for(i = hand.chosenHole + 1; i <= hand.chosenHole + startBalls; i++){
+      //fjerner en kugle fra hånden og tilføjer den til hullet
+      hand.removeBallsInHand();
+      holes[i % numberOfHoles].addBallHole();
+      println(" " + i % numberOfHoles + " " + holes[i % numberOfHoles].numberOfBalls );
     }
-
+   
+   stoppedHole = i % numberOfHoles;
+   stoppedHole = stoppedHole - 1;
+   if(stoppedHole == -1){stoppedHole = 13;}
+    println(stoppedHole);
+    
+    if (hand.ballsInHand == 0){
+      if(holes[stoppedHole].numberOfBalls == 1){
+        n = n - 1;
+        println("1");
+      }
+      
+      else if(stoppedHole == 6 || stoppedHole == 13){
+        n = n - 1;
+        println("Maol!");
+      }
+      
+      else if(holes[stoppedHole].numberOfBalls == 0){
+      n = n - 1;
+        println("0 boldte");
+      }
+      
+      else{
+        hand.click(stoppedHole, holes[stoppedHole].numberOfBalls);
+        holes[stoppedHole].numberOfBalls = 0;
+      }
+    }
   }
-
 }
-}
-
-void loop(){
-  //sætter tælleren til at være lig med start hullet, som er valgt ved klik*ikke lavet endnu*, add ball i hullet, gøres inde i loopet 
- for(int i = hand.chosenHole; i < hand.chosenHole + hand.ballsInHand; i++){
-  //fjerner en kugle fra hånden og tilføjer den til hullet
-  hand.removeBallsInHand();
-  holes[i%numberOfHoles].addBallHole();
   
-  
-  }
-}
-
-//
+/*int n = holes[stoppedHole].numberOfBalls - 1;
+              while(n > 0){
+              hand.click(stoppedHole, holes[stoppedHole].numberOfBalls);
+              holes[stoppedHole].numberOfBalls = 0;
+              loop();
+              n = holes[stoppedHole].numberOfBalls;
+            }  */
+ 
   //ellipse(75, 90, 90, 90);
   //ellipse(205, 90, 90, 90);
   //ellipse(335, 90, 90, 90);
