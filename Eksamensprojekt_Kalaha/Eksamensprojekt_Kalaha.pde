@@ -175,84 +175,74 @@ void printGameEvent() {
   text("Player " + turn + " Your turn, choose a hole on your side", 20, 500);  
 }
 
-void spilLoop(){
+void spilLoop() {
   int startBalls = hand.ballsInHand;
   int i;
   int stoppedHole;
   int n = 1;
-  while(n > 0){
+  while (n > 0) {
     //sætter tælleren til at være lig med start hullet, som er valgt ved klik*ikke lavet endnu*, add ball i hullet, gøres inde i loopet 
-   for(i = hand.chosenHole + 1; i <= hand.chosenHole + startBalls; i++){
+    int currentHole = hand.chosenHole + 1;
+    while(hand.ballsInHand > 0) {
+      
       //fjerner en kugle fra hånden og tilføjer den til hullet
-      
+
       // gør så der ikke bliver smidt kugler i modstanderens mål
-      if(i % numberOfHoles == 6 & turn == 2){ 
-          println("enemyGoal");
-    }//if
-      
-      else if(i % numberOfHoles == 13 & turn == 1){
-          println("enemyGoal");
-        }//elif
-      
-      else{
-        holes[i % numberOfHoles].addBallHole();
+      if (currentHole % numberOfHoles == 6 & turn == 2) { 
+        println("enemyGoal");
+      }//if
+
+      else if (currentHole % numberOfHoles == 13 & turn == 1) {
+        println("enemyGoal");
+      }//elif
+
+      else {
+        holes[currentHole % numberOfHoles].addBallHole();
         hand.removeBallsInHand();
+        
       }//else
-      
-      println(" " + i % numberOfHoles + " " + holes[i % numberOfHoles].numberOfBalls );
+      currentHole++;
+      println(" " + currentHole % numberOfHoles + " " + holes[currentHole % numberOfHoles].numberOfBalls );
     }//slut af for loop
-   
-   stoppedHole = i % numberOfHoles;
-   stoppedHole = stoppedHole - 1;
-   if(stoppedHole == -1){stoppedHole = 13;}
+
+    stoppedHole = currentHole % numberOfHoles;
+    stoppedHole = stoppedHole - 1;
+    if (stoppedHole == -1) {
+      stoppedHole = 13;
+    }
     println(stoppedHole);
-    
-    if (hand.ballsInHand == 0){
+
+    if (hand.ballsInHand == 0) {
       //Spiller ikke videre hvis der ikke var nogen kugle i forvejen
-      
-      
+
+
       //Spiller ikke videre pga men rammer mål med sin sidste kugle
-      if(stoppedHole == 6 || stoppedHole == 13){
+      if (stoppedHole == 6 || stoppedHole == 13) {
         n = 0;
         println("Maol!");
-        
-        if (turn == 1){
+
+        if (turn == 1) {
           turn = 1;
-        }
-        else if(turn == 2){
+        } else if (turn == 2) {
           turn = 2;
         }
-      }
-      
-      else if(holes[stoppedHole].numberOfBalls == 1){
+      } else if (holes[stoppedHole].numberOfBalls == 1) {
         n = 0;
         println("1 bold efter smidt");
-        
-        if (turn == 1){
+
+        if (turn == 1) {
           turn = 2;
         }//if
-        else if(turn == 2){
+        else if (turn == 2) {
           turn = 1;
         }//elif
       }//elif number of balls
-      
-      else if(holes[stoppedHole].numberOfBalls == 0){
-        n = 0;
-        println("0 bolde");
-        if (turn == 1){
-          turn = 2;
-        }//if
-        else if(turn == 2){
-          turn = 1;
-        }//elif
-      }//elif number of balls
-      
-      else{
+
+      else {
         hand.click(stoppedHole, holes[stoppedHole].numberOfBalls);
         holes[stoppedHole].numberOfBalls = 0;
         startBalls = hand.ballsInHand;
       } //else
-      
     }//if ballsInHand
   }//while > 0
 }//void spilLoop
