@@ -71,49 +71,45 @@ void draw() {
     holes[i].drawAmount();
   }
   checkWin();
-  
 }
 
-void checkWin(){
+void checkWin() {
   int sumOfHoles1 = 0;
   int sumOfHoles2 = 0;
-  
-    for(int i = 0; i < 6; i++){
-      sumOfHoles1 += holes[i].numberOfBalls;
-    }
-    
-    for(int i = 7; i < 13; i++){
-      sumOfHoles2 += holes[i].numberOfBalls;
-    }
-    
-    if (sumOfHoles1 == 0){
-      
-      win();
-    }
-    else if(sumOfHoles2 == 0){
-      
-      win();
-    }
+
+  for (int i = 0; i < 6; i++) {
+    sumOfHoles1 += holes[i].numberOfBalls;
   }
 
+  for (int i = 7; i < 13; i++) {
+    sumOfHoles2 += holes[i].numberOfBalls;
+  }
 
-void win(){
+  if (sumOfHoles1 == 0) {
+
+    win();
+  } else if (sumOfHoles2 == 0) {
+
+    win();
+  }
+}
+
+
+void win() {
   int winner = 0;
-  
-  if (holes[6].numberOfBalls > holes[13].numberOfBalls){
+
+  if (holes[6].numberOfBalls > holes[13].numberOfBalls) {
     winner = 1;
-  }
-  else if(holes[13].numberOfBalls > holes[6].numberOfBalls){
-  winner = 2;
+  } else if (holes[13].numberOfBalls > holes[6].numberOfBalls) {
+    winner = 2;
   }
   winPrint(winner);
 }
 
-void winPrint(int winner){
+void winPrint(int winner) {
   fill(0, 255, 0);
   textSize(48);
   text("PLAYER "+ winner + " WON!", 350, height/2 + 100 );
-  
 }
 
 
@@ -130,68 +126,70 @@ void checkIfHover() {
     rect(650, 700, 100, 50);
   } 
 
+  if (turn == 1) {
+    // første hul, nummer 0 i array
+    if (mouseX >= 35 & mouseX <= 115 & mouseY >= 50 & mouseY <= 130) {
+      fill(212, 175, 55);
+      ellipse(hulPositionX[0], hulPositionY[0], str, str);
+    }
 
-  // første hul, nummer 0 i array
-  if (mouseX >= 35 & mouseX <= 115 & mouseY >= 50 & mouseY <= 130) {
-    fill(212, 175, 55);
-    ellipse(hulPositionX[0], hulPositionY[0], str, str);
-  }
+    // andet hul, nummer 1 i array
+    if (mouseX >= 145 & mouseX <= 245 & mouseY >= 50 & mouseY <= 130) {
+      fill(212, 175, 55);
+      ellipse(hulPositionX[1], hulPositionY[1], str, str);
+    }
+    // tredje hul, nummer 2 i array
+    if (mouseX >= 295 & mouseX <= 375 & mouseY >= 50 & mouseY <= 130) {
+      fill(212, 175, 55);
+      ellipse(hulPositionX[2], hulPositionY[2], str, str);
+    }
+    // fjerde hul, nummer 3 i array
+    if (mouseX >= 425 & mouseX <= 505 & mouseY >= 50 & mouseY <= 130) {
+      fill(212, 175, 55);
+      ellipse(hulPositionX[3], hulPositionY[3], str, str);
+    }
 
-  // andet hul, nummer 1 i array
-  if (mouseX >= 145 & mouseX <= 245 & mouseY >= 50 & mouseY <= 130) {
-    fill(212, 175, 55);
-    ellipse(hulPositionX[1], hulPositionY[1], str, str);
-  }
-  // tredje hul, nummer 2 i array
-  if (mouseX >= 295 & mouseX <= 375 & mouseY >= 50 & mouseY <= 130) {
-    fill(212, 175, 55);
-    ellipse(hulPositionX[2], hulPositionY[2], str, str);
-  }
-  // fjerde hul, nummer 3 i array
-  if (mouseX >= 425 & mouseX <= 505 & mouseY >= 50 & mouseY <= 130) {
-    fill(212, 175, 55);
-    ellipse(hulPositionX[3], hulPositionY[3], str, str);
-  }
-
-  // femte hul, nummer 4 i array
-  if (mouseX >= 555 & mouseX <= 635 & mouseY >= 50 & mouseY <= 130) {
-    fill(212, 175, 55);
-    ellipse(hulPositionX[4], hulPositionY[4], str, str);
-  }
-  // sjette hul, nummer 5 i array
-  if (mouseX >= 685 & mouseX <= 765 & mouseY >= 50 & mouseY <= 130) {
-    fill(212, 175, 55);
-    ellipse(hulPositionX[5], hulPositionY[5], str, str);
-  }
-  // ottende hul, nummer 7 i array 
-  if (mouseX >= 685 & mouseX <= 765 & mouseY >= 320 & mouseY <= 400) {
-    fill(212, 175, 55);
-    ellipse(hulPositionX[7], hulPositionY[7], str, str);
-  }
-  // niende hul, nummer 8 i array
-  if (mouseX >= 555 & mouseX <= 635 & mouseY >= 320 & mouseY <= 400) {
-    fill(212, 175, 55);
-    ellipse(hulPositionX[8], hulPositionY[8], str, str);
-  }
-  // tiende hul, nummer 9 i array
-  if (mouseX >= 425 & mouseX <= 505 & mouseY >= 320 & mouseY <= 400) {
-    fill(212, 175, 55);
-    ellipse(hulPositionX[9], hulPositionY[9], str, str);
-  }
-  // elfte hul, nummer 10 i array   
-  if (mouseX >= 295 & mouseX <= 375 & mouseY >= 320 & mouseY <= 400) {
-    fill(212, 175, 55);
-    ellipse(hulPositionX[10], hulPositionY[10], str, str);
-  }
-  // tolvte hul, nummer 11 i array
-  if (mouseX >= 145 & mouseX <= 245 & mouseY >= 320 & mouseY <= 400) {
-    fill(212, 175, 55);
-    ellipse(hulPositionX[11], hulPositionY[11], str, str);
-  }
-  // trettende hul, nummer 12 i array
-  if (mouseX >= 35 & mouseX <= 115 & mouseY >= 320 & mouseY <= 400) {
-    fill(212, 175, 55);
-    ellipse(hulPositionX[12], hulPositionY[12], str, str);
+    // femte hul, nummer 4 i array
+    if (mouseX >= 555 & mouseX <= 635 & mouseY >= 50 & mouseY <= 130) {
+      fill(212, 175, 55);
+      ellipse(hulPositionX[4], hulPositionY[4], str, str);
+    }
+    // sjette hul, nummer 5 i array
+    if (mouseX >= 685 & mouseX <= 765 & mouseY >= 50 & mouseY <= 130) {
+      fill(212, 175, 55);
+      ellipse(hulPositionX[5], hulPositionY[5], str, str);
+    }
+  } else if (turn == 2) {
+    // ottende hul, nummer 7 i array 
+    if (mouseX >= 685 & mouseX <= 765 & mouseY >= 320 & mouseY <= 400) {
+      fill(212, 175, 55);
+      ellipse(hulPositionX[7], hulPositionY[7], str, str);
+    }
+    // niende hul, nummer 8 i array
+    if (mouseX >= 555 & mouseX <= 635 & mouseY >= 320 & mouseY <= 400) {
+      fill(212, 175, 55);
+      ellipse(hulPositionX[8], hulPositionY[8], str, str);
+    }
+    // tiende hul, nummer 9 i array
+    if (mouseX >= 425 & mouseX <= 505 & mouseY >= 320 & mouseY <= 400) {
+      fill(212, 175, 55);
+      ellipse(hulPositionX[9], hulPositionY[9], str, str);
+    }
+    // elfte hul, nummer 10 i array   
+    if (mouseX >= 295 & mouseX <= 375 & mouseY >= 320 & mouseY <= 400) {
+      fill(212, 175, 55);
+      ellipse(hulPositionX[10], hulPositionY[10], str, str);
+    }
+    // tolvte hul, nummer 11 i array
+    if (mouseX >= 145 & mouseX <= 245 & mouseY >= 320 & mouseY <= 400) {
+      fill(212, 175, 55);
+      ellipse(hulPositionX[11], hulPositionY[11], str, str);
+    }
+    // trettende hul, nummer 12 i array
+    if (mouseX >= 35 & mouseX <= 115 & mouseY >= 320 & mouseY <= 400) {
+      fill(212, 175, 55);
+      ellipse(hulPositionX[12], hulPositionY[12], str, str);
+    }
   }
 }
 
@@ -202,92 +200,94 @@ void mouseClicked() {
     exit();
   } 
 
+  if (turn == 1) {
+    // første hul, nummer 0 i array
+    if (mouseX >= 35 & mouseX <= 115 & mouseY >= 50 & mouseY <= 130) {
+      hand.click(0, holes[0].numberOfBalls );
+      holes[0].numberOfBalls = 0;
+      spilLoop();
+      println("exit 1");
+    }
 
-  // første hul, nummer 0 i array
-  if (mouseX >= 35 & mouseX <= 115 & mouseY >= 50 & mouseY <= 130) {
-    hand.click(0, holes[0].numberOfBalls );
-    holes[0].numberOfBalls = 0;
-    spilLoop();
-    println("exit 1");
-  }
+    // andet hul, nummer 1 i array
+    if (mouseX >= 145 & mouseX <= 245 & mouseY >= 50 & mouseY <= 130) {
+      hand.click(1, holes[1].numberOfBalls );
+      holes[1].numberOfBalls = 0;
+      spilLoop(); 
+      println("exit 2");
+    }
+    // tredje hul, nummer 2 i array
+    if (mouseX >= 295 & mouseX <= 375 & mouseY >= 50 & mouseY <= 130) {
+      hand.click(2, holes[2].numberOfBalls );
+      holes[2].numberOfBalls = 0;
+      spilLoop();
+      println("exit 3");
+    }
+    // fjerde hul, nummer 3 i array
+    if (mouseX >= 425 & mouseX <= 505 & mouseY >= 50 & mouseY <= 130) {
+      hand.click(3, holes[3].numberOfBalls );
+      holes[3].numberOfBalls = 0;
+      spilLoop();
+      println("exit 4");
+    }
 
-  // andet hul, nummer 1 i array
-  if (mouseX >= 145 & mouseX <= 245 & mouseY >= 50 & mouseY <= 130) {
-    hand.click(1, holes[1].numberOfBalls );
-    holes[1].numberOfBalls = 0;
-    spilLoop(); 
-    println("exit 2");
-  }
-  // tredje hul, nummer 2 i array
-  if (mouseX >= 295 & mouseX <= 375 & mouseY >= 50 & mouseY <= 130) {
-    hand.click(2, holes[2].numberOfBalls );
-    holes[2].numberOfBalls = 0;
-    spilLoop();
-    println("exit 3");
-  }
-  // fjerde hul, nummer 3 i array
-  if (mouseX >= 425 & mouseX <= 505 & mouseY >= 50 & mouseY <= 130) {
-    hand.click(3, holes[3].numberOfBalls );
-    holes[3].numberOfBalls = 0;
-    spilLoop();
-    println("exit 4");
-  }
-
-  // femte hul, nummer 4 i array
-  if (mouseX >= 555 & mouseX <= 635 & mouseY >= 50 & mouseY <= 130) {
-    hand.click(4, holes[4].numberOfBalls );
-    holes[4].numberOfBalls = 0;
-    spilLoop();
-    println("exit 5");
-  }
-  // sjette hul, nummer 5 i array
-  if (mouseX >= 685 & mouseX <= 765 & mouseY >= 50 & mouseY <= 130) {
-    hand.click(5, holes[5].numberOfBalls );
-    holes[5].numberOfBalls = 0;
-    spilLoop();
-    println("exit 6");
-  }
-  // ottende hul, nummer 7 i array 
-  if (mouseX >= 685 & mouseX <= 765 & mouseY >= 320 & mouseY <= 400) {
-    hand.click(7, holes[7].numberOfBalls );
-    holes[7].numberOfBalls = 0;
-    spilLoop();
-    println("exit 7");
-  }
-  // niende hul, nummer 8 i array
-  if (mouseX >= 555 & mouseX <= 635 & mouseY >= 320 & mouseY <= 400) {
-    hand.click(8, holes[8].numberOfBalls );
-    holes[8].numberOfBalls = 0;
-    spilLoop();
-    println("exit 8");
-  }
-  // tiende hul, nummer 9 i array
-  if (mouseX >= 425 & mouseX <= 505 & mouseY >= 320 & mouseY <= 400) {
-    hand.click(9, holes[9].numberOfBalls );
-    holes[9].numberOfBalls = 0;
-    spilLoop();
-    println("exit 9");
-  }
-  // elfte hul, nummer 10 i array   
-  if (mouseX >= 295 & mouseX <= 375 & mouseY >= 320 & mouseY <= 400) {
-    hand.click(10, holes[10].numberOfBalls );
-    holes[10].numberOfBalls = 0;
-    spilLoop();
-    println("exit 10");
-  }
-  // tolvte hul, nummer 11 i array
-  if (mouseX >= 145 & mouseX <= 245 & mouseY >= 320 & mouseY <= 400) {
-    hand.click(11, holes[11].numberOfBalls );
-    holes[11].numberOfBalls = 0;
-    spilLoop();
-    println("exit 11");
-  }
-  // trettende hul, nummer 12 i array
-  if (mouseX >= 35 & mouseX <= 115 & mouseY >= 320 & mouseY <= 400) {
-    hand.click(12, holes[12].numberOfBalls );
-    holes[12].numberOfBalls = 0;
-    spilLoop();
-    println("exit 12");
+    // femte hul, nummer 4 i array
+    if (mouseX >= 555 & mouseX <= 635 & mouseY >= 50 & mouseY <= 130) {
+      hand.click(4, holes[4].numberOfBalls );
+      holes[4].numberOfBalls = 0;
+      spilLoop();
+      println("exit 5");
+    }
+    // sjette hul, nummer 5 i array
+    if (mouseX >= 685 & mouseX <= 765 & mouseY >= 50 & mouseY <= 130) {
+      hand.click(5, holes[5].numberOfBalls );
+      holes[5].numberOfBalls = 0;
+      spilLoop();
+      println("exit 6");
+    }
+  } else if (turn == 2) {
+    // ottende hul, nummer 7 i array 
+    if (mouseX >= 685 & mouseX <= 765 & mouseY >= 320 & mouseY <= 400) {
+      hand.click(7, holes[7].numberOfBalls );
+      holes[7].numberOfBalls = 0;
+      spilLoop();
+      println("exit 7");
+    }
+    // niende hul, nummer 8 i array
+    if (mouseX >= 555 & mouseX <= 635 & mouseY >= 320 & mouseY <= 400) {
+      hand.click(8, holes[8].numberOfBalls );
+      holes[8].numberOfBalls = 0;
+      spilLoop();
+      println("exit 8");
+    }
+    // tiende hul, nummer 9 i array
+    if (mouseX >= 425 & mouseX <= 505 & mouseY >= 320 & mouseY <= 400) {
+      hand.click(9, holes[9].numberOfBalls );
+      holes[9].numberOfBalls = 0;
+      spilLoop();
+      println("exit 9");
+    }
+    // elfte hul, nummer 10 i array   
+    if (mouseX >= 295 & mouseX <= 375 & mouseY >= 320 & mouseY <= 400) {
+      hand.click(10, holes[10].numberOfBalls );
+      holes[10].numberOfBalls = 0;
+      spilLoop();
+      println("exit 10");
+    }
+    // tolvte hul, nummer 11 i array
+    if (mouseX >= 145 & mouseX <= 245 & mouseY >= 320 & mouseY <= 400) {
+      hand.click(11, holes[11].numberOfBalls );
+      holes[11].numberOfBalls = 0;
+      spilLoop();
+      println("exit 11");
+    }
+    // trettende hul, nummer 12 i array
+    if (mouseX >= 35 & mouseX <= 115 & mouseY >= 320 & mouseY <= 400) {
+      hand.click(12, holes[12].numberOfBalls );
+      holes[12].numberOfBalls = 0;
+      spilLoop();
+      println("exit 12");
+    }
   }
 }
 
