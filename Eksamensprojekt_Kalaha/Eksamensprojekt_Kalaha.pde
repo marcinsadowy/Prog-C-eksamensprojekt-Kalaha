@@ -37,8 +37,9 @@ void setup() {
   // laver arrayet og putter huller ind i det
   holes = new Hole[numberOfHoles];
   // fiks så det er forskellige huller  
+  int bl = 6;
   for ( int i = 0; i < numberOfHoles; i++) { 
-    int bl = 6;
+    bl = 6;
     //hvis hullet er et mål, så er der ikke nogen bolde i hullet
     if (i == 6 || i == 13) {
       bl = 0;
@@ -63,9 +64,13 @@ void draw() {
   text(hand.ballsInHand, mouseX + 30, mouseY - 5);
 
   fill(255);
+  //exit knap
   rect(650, 700, 100, 50);
+  //rematch knap
   rect(20, 700, 140, 50);
+  
   checkIfHover();
+  
   fill(0);
   text("REMATCH", 40, 730);
   text("EXIT", 680, 730);
@@ -210,11 +215,7 @@ void mouseClicked() {
     exit();
   } 
 
-  if (winTrue == true) {
-    if (mouseX >= 20 & mouseX <= 120 & mouseY >= 700 & mouseY <= 750) {
-      rematch();
-    }
-  }
+  
 
   if (turn == 1) {
     // første hul, nummer 0 i array
@@ -261,7 +262,9 @@ void mouseClicked() {
       spilLoop();
       println("exit 6");
     }
-  } else if (turn == 2) {
+  } 
+  
+  else if (turn == 2) {
     // ottende hul, nummer 7 i array 
     if (mouseX >= 685 & mouseX <= 765 & mouseY >= 320 & mouseY <= 400) {
       hand.click(7, holes[7].numberOfBalls );
@@ -305,6 +308,12 @@ void mouseClicked() {
       println("exit 12");
     }
   }
+  
+  if (winTrue == true) {
+    if (mouseX >= 20 & mouseX <= 120 & mouseY >= 700 & mouseY <= 750) {
+      rematch();
+    }
+  }
 }
 
 void printGameEvent() {
@@ -322,11 +331,9 @@ void rematch() {
 
 void spilLoop() {
   int startBalls = hand.ballsInHand;
-  int i;
   int stoppedHole;
   int n = 1;
-  if (holes[hand.chosenHole].numberOfBalls == 0) {
-  } else {
+
     while (n > 0) {
       //sætter tælleren til at være lig med start hullet, som er valgt ved klik*ikke lavet endnu*, add ball i hullet, gøres inde i loopet 
       int currentHole = hand.chosenHole + 1;
@@ -391,7 +398,7 @@ void spilLoop() {
         } //else
       }//if ballsInHand
     }//while > 0
-  }
+ 
 }//void spilLoop
 
 /*int n = holes[stoppedHole].numberOfBalls - 1;
