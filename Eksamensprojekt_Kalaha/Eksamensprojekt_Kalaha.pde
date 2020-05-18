@@ -137,7 +137,7 @@ void checkIfHover() {
   if (winTrue == true) {
     if (mouseX >= 20 & mouseX <= 120 & mouseY >= 700 & mouseY <= 750) {
       fill(212, 175, 55);
-      rect(20, 700, 100, 50);
+      rect(20, 700, 140, 50);
     }
   }
 
